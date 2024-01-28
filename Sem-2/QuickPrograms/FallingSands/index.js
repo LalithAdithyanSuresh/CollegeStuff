@@ -8,7 +8,7 @@ const CellHeight = 15;
 const CellGap = 1;
 
 const NewSandAffectSize = 2;
-const FPS = 60;
+var FPS = 60;
 
 canvas.width = ScreenWidth;
 canvas.height = ScreenHeight;
