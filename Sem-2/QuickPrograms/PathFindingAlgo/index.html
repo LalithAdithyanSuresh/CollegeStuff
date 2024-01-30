@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A* Visualization</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="400" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const gridSize = 20;
+    const rows = canvas.height / gridSize;
+    const cols = canvas.width / gridSize;
+
+    let grid = generateRandomMap(rows, cols);
+    let start = { row: 0, col: 0 };
+    let end = { row: rows - 1, col: cols - 1 };
+
+    function generateRandomMap(rows, cols) {
+      const map = [];
+      for (let i = 0; i < rows; i++) {
+        const row = [];
+        for (let j = 0; j < cols; j++) {
+          row.push(Math.random() < 0.2 ? 1 : 0);
+        }
+        map.push(row);
+      }
+      return map;
+    }
+
+    function drawGrid() {
+      for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+          const color = grid[i][j] === 1 ? '#000' : '#fff';
+          ctx.fillStyle = color;
+          ctx.fillRect(j * gridSize, i * gridSize, gridSize, gridSize);
+          ctx.strokeStyle = '#ccc';
+          ctx.strokeRect(j * gridSize, i * gridSize, gridSize, gridSize);
+        }
+      }
+    }
+
+    function drawStartEnd() {
+      ctx.fillStyle = '#00f';
+      ctx.fillRect(start.col * gridSize, start.row * gridSize, gridSize, gridSize);
+      ctx.fillStyle = '#f00';
+      ctx.fillRect(end.col * gridSize, end.row * gridSize, gridSize, gridSize);
+    }
+
+    function visualizeAStar() {
+      const openSet = [];
+      const closedSet = [];
+      const cameFrom = {};
+      const gScore = {};
+      const fScore = {};
+
+      for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+          gScore[`${i}-${j}`] = Infinity;
+          fScore[`${i}-${j}`] = Infinity;
+        }
+      }
+
+      gScore[`${start.row}-${start.col}`] = 0;
+      fScore[`${start.row}-${start.col}`] = heuristic(start, end);
+      openSet.push(start);
+
+      while (openSet.length > 0) {
+        // Implement A* algorithm logic here
+
+        // 1. Find the node in openSet with the lowest fScore
+        let current = openSet[0];
+        for (let i = 1; i < openSet.length; i++) {
+          if (fScore[`${openSet[i].row}-${openSet[i].col}`] < fScore[`${current.row}-${current.col}`]) {
+            current = openSet[i];
+          }
+        }
+
+        // 2. If the current node is the goal, reconstruct and return the path
+        if (current.row === end.row && current.col === end.col) {
+          reconstructPath(cameFrom, current);
+          return;
+        }
+
+        // 3. Move the current node from openSet to closedSet
+        openSet.splice(openSet.indexOf(current), 1);
+        closedSet.push(current);
+
+        // 4. Explore neighbors
+        const neighbors = getNeighbors(current);
+        for (const neighbor of neighbors) {
+          if (closedSet.some((node) => node.row === neighbor.row && node.col === neighbor.col)) {
+            continue; // Ignore the neighbor which is already evaluated.
+          }
+
+          const tentativeGScore = gScore[`${current.row}-${current.col}`] + 1;
+
+          if (!openSet.some((node) => node.row === neighbor.row && node.col === neighbor.col)) {
+            openSet.push(neighbor);
+          } else if (tentativeGScore >= gScore[`${neighbor.row}-${neighbor.col}`]) {
+            continue; // This is not a better path.
+          }
+
+          // This path is the best until now. Record it!
+          cameFrom[`${neighbor.row}-${neighbor.col}`] = current;
+          gScore[`${neighbor.row}-${neighbor.col}`] = tentativeGScore;
+          fScore[`${neighbor.row}-${neighbor.col}`] = gScore[`${neighbor.row}-${neighbor.col}`] + heuristic(neighbor, end);
+        }
+      }
+
+      // If openSet is empty but goal was not reached, no path exists
+      alert("No path found!");
+    }
+
+    function heuristic(nodeA, nodeB) {
+      // A simple heuristic function (Euclidean distance)
+      return Math.sqrt((nodeA.row - nodeB.row) ** 2 + (nodeA.col - nodeB.col) ** 2);
+    }
+
+    function getNeighbors(node) {
+      const neighbors = [];
+      if (node.row > 0 && grid[node.row - 1][node.col] !== 1) {
+        neighbors.push({ row: node.row - 1, col: node.col });
+      }
+      if (node.row < rows - 1 && grid[node.row + 1][node.col] !== 1) {
+        neighbors.push({ row: node.row + 1, col: node.col });
+      }
+      if (node.col > 0 && grid[node.row][node.col - 1] !== 1) {
+        neighbors.push({ row: node.row, col: node.col - 1 });
+      }
+      if (node.col < cols - 1 && grid[node.row][node.col + 1] !== 1) {
+        neighbors.push({ row: node.row, col: node.col + 1 });
+      }
+      return neighbors;
+    }
+
+    function reconstructPath(cameFrom, current) {
+      const path = [current];
+      while (cameFrom[`${current.row}-${current.col}`]) {
+        current = cameFrom[`${current.row}-${current.col}`];
+        path.unshift(current);
+      }
+
+      // Mark the path on the grid
+      for (const node of path) {
+        grid[node.row][node.col] = 2; // Marked as path
+      }
+
+      update();
+    }
+
+    function update() {
+      drawGrid();
+      drawStartEnd();
+      visualizeAStar();
+    }
+
+    canvas.addEventListener('click', (event) => {
+      const rect = canvas.getBoundingClientRect();
+      const clickX = event.clientX - rect.left;
+      const clickY = event.clientY - rect.top;
+
+      const clickedRow = Math.floor(clickY / gridSize);
+      const clickedCol = Math.floor(clickX / gridSize);
+
+      if (grid[clickedRow][clickedCol] !== 1) {
+        if (event.shiftKey) {
+          // Set end point
+          end = { row: clickedRow, col: clickedCol };
+        } else {
+          // Set start point
+          start = { row: clickedRow, col: clickedCol };
+        }
+        update();
+      }
+    });
+
+    // Call the update function to start the visualization
+    update();
+  </script>
+</body>
+</html>
