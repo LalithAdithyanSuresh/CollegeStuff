@@ -8,5 +8,11 @@ What are data structures?
         ~ Non-Linear Data Structures (Linked Lists, Tree,..)
 
 
-Abstract Data Types (Mathematical Models) [ examples : classes | like : list,dict,set]
+Abstract Data Types (Mathematical Models => Set of operations + Set of lists) [ examples : classes | like : list,dict,set] { A mathematical model in which you have a set of values over which you can peform a set of operations}
+    - List ADT (Array implementation)
+        ~ Inertions
+        ~ Search
+        ~ Remove
+        ~ Traversal
+        
 
