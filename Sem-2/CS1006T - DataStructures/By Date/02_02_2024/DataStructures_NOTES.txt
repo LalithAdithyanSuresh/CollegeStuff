@@ -1,0 +1,12 @@
+What are Data?
+    - Raw Facts
+What are data structures?
+    - Logical + Efficient Data Storage + Organization + Retrieval
+    - Program : Data Structures + Algorithms
+    - Types :
+        ~ Liner Data Structures (Arrays,Stack..)
+        ~ Non-Linear Data Structures (Linked Lists, Tree,..)
+
+
+Abstract Data Types (Mathematical Models) [ examples : classes | like : list,dict,set]
+
