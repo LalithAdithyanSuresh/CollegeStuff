@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+
 #define List_Size_Given 5
 
 class List{
@@ -35,9 +38,11 @@ class List{
             }
         }
         void Display(){
-            for(TempCurrent=CurrentIndex;TempCurrent>-1;TempCurrent--){
+            printf("\n[");
+            for(TempCurrent=CurrentIndex;TempCurrent>0;TempCurrent--){
                 printf("%d,",listArray[TempCurrent]);
             }
+            printf("%d]",listArray[0]);
         }
 };
 
@@ -45,8 +50,10 @@ int main(){
     List a;
     int opt,var;
     while(1==1){
-        printf("\n\nOptions : \n\t1-Append\n\t2-Display\n>>>");
+        system("cls");
+        printf("\n-------------------------------------------------\nOptions : \n\t0-Exit\n\t1-Append\n\t2-Display\n>>> ");
         scanf("%d",&opt);
+        system("cls");
         switch (opt)
         {
         case 0:
@@ -64,5 +71,8 @@ int main(){
             printf("Invalid Choise\n");
             break;
         }
+        printf("\n(Press any key to continue)");
+        getchar();
+        getchar();
     }
 }
