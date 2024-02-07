@@ -29,16 +29,16 @@ class List{
                 return 0;
             }
         }
-        void Append(int val){
+        int Append(int val){
             if(IsFull()==0){
                 for(TempCurrent = CurrentIndex;TempCurrent > -1;TempCurrent--){
                     listArray[TempCurrent+1]=listArray[TempCurrent];
                 }
                 listArray[0]=val;
                 CurrentIndex++;
-                // Display();
-                // printf("\nInserted %d\n",val);
+                return 1;
             }
+            return 0;
         }
         void Display(){
             printf("\n[");
@@ -64,7 +64,11 @@ int main(){
         case 1:
             printf("\nValue : ");
             scanf("%d",&var);
-            a.Append(var);
+            if(a.Append(var)==1){
+                printf("\nInserted Successful");
+            }else{
+                printf("\nList is Full :(");
+            }
             break;
         case 2:
             printf("Values in List : ");
