@@ -1,5 +1,5 @@
-// DISCLAIMER : this program is written to work in sync with Windows OS
-// for the program that works in Ubuntu please refer the program 
+// DISCLAIMER : this program is written to work in sync with Ubuntu OS
+// for the program that works in Windows please refer the program https://github.com/LalithAdithyanSuresh/CollegeStuff/blob/main/Sem-2/CS1006T%20-%20DataStructures/By%20Date/07_02_2024/LIstADT(ArrayImplementation)_V3.cpp
 
 #include <stdio.h>
 #include <stdlib.h>
