@@ -56,10 +56,10 @@ int main(){
     List a;
     int opt,var;
     while(1==1){
-        system("cls");
+        system("clear");
         printf("\n-------------------------------------------------\nOptions : \n\t0-Exit\n\t1-Append\n\t2-Display\n>>> ");
         scanf("%d",&opt);
-        system("cls");
+        system("clear");
         switch (opt)
         {
         case 0:
