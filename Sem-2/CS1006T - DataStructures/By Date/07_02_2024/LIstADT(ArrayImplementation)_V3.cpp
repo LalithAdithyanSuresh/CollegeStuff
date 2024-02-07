@@ -7,11 +7,14 @@
 class List{
     private:
         int List_Size = List_Size_Given;
-        int CurrentIndex = -1;
+        int CurrentIndex;
         int TempCurrent = 0;
         int listArray[List_Size_Given] ={0};
 
     public: 
+        List(){
+            CurrentIndex = -1;
+        }
         int IsEmpty(){
             if (CurrentIndex == -1){
                 return 1;
