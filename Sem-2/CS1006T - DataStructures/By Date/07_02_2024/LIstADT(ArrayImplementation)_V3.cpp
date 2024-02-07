@@ -45,8 +45,8 @@ int main(){
     List a;
     int opt,var;
     while(1==1){
-        printf("Options : \n\t1-Append\n>>>");
-        scanf("%d",opt);
+        printf("\n\nOptions : \n\t1-Append\n\t2-Display\n>>>");
+        scanf("%d",&opt);
         switch (opt)
         {
         case 0:
@@ -59,7 +59,9 @@ int main(){
         case 2:
             printf("Values in List : ");
             a.Display();
+            break;
         default:
+            printf("Invalid Choise\n");
             break;
         }
     }
