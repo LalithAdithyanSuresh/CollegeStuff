@@ -16,6 +16,6 @@
 struct Node
 {
     int data;  // Stores the Data Part of the Node
-    struct Node *Node;   // Stores the Address of the next Node if needed
+    struct Node *Next;   // Stores the Address of the next Node (if needed)
 };
 
