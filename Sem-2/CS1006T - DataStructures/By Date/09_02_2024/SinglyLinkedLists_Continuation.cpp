@@ -51,9 +51,15 @@ class List{
         List(){
             Head = nullptr;
         }
+        // Create New Node And return Pointer
         struct Node * CreateNode(){
             return (struct Node *)malloc(sizeof(struct Node));
         }
+        // Delete and free memoryof the Node
+        void DeleteNode(struct Node *del){
+            free(del);
+        }
+        // Check if the List is empty
         int IsEmpty(){
             if (Head==nullptr){
                 return 1;
@@ -62,6 +68,7 @@ class List{
             }
             
         }
+        // Insert a New Node in the beginning
         int Insert_Beg_Node(int val){
             NewNode = CreateNode();
             NewNode->data = val;
@@ -69,6 +76,7 @@ class List{
             Head = NewNode;
             return 1;
         }
+        // Add a new node to the end
         int Append_Node(int val){
             if(IsEmpty()==0){
                 CurrentPoint = Head;
@@ -83,6 +91,7 @@ class List{
             }return 0;
             
         }
+        // Insert A new Node with the given position
         int Insert_Pos_Node(int val ,int pos){
             if(pos == 0){
                 Insert_Beg_Node(val);
@@ -104,6 +113,59 @@ class List{
                 return 1;
             }return 0;
         }
+        // Delete the beginning Node
+        int Delete_Beg_Node(){
+            if(IsEmpty()==0){
+                CurrentPoint = Head;
+                Head = CurrentPoint->Next;
+                DeleteNode(CurrentPoint);
+                return 1;
+
+            }else{
+                return 0;
+            }
+        }
+        // Remove the last Node
+        int Pop_Node(){
+            if(IsEmpty()==0){
+                CurrentPoint = Head;
+                NewNode = Head;
+                while(CurrentPoint->Next != nullptr){
+                    NewNode = CurrentPoint;
+                    CurrentPoint = CurrentPoint->Next;
+                }
+                NewNode->Next = nullptr;
+                DeleteNode(CurrentPoint);
+                return 1;
+            }else{
+                return 0;
+            }
+        }
+        // Delete the node at given index
+        int Delete_Pos_Node(int pos){
+            if(pos == 0){
+                Delete_Beg_Node();
+                return 1;
+            }
+            if(IsEmpty()==0){
+                CurrentPoint = Head;
+                NewNode = Head;
+                while((CurrentPoint->Next != nullptr) && (pos>0)){
+                    pos--;
+                    NewNode = CurrentPoint;
+                    CurrentPoint = CurrentPoint->Next;
+                }
+                if(pos>0){
+                    return 0;
+                }else{
+                    NewNode->Next = CurrentPoint->Next;
+                    DeleteNode(CurrentPoint);
+                    return 1;
+                }
+            }
+            return 0;
+        }
+        // Display the contents of the List
         void Display(){
             CurrentPoint = Head;
             printf("[");
@@ -129,5 +191,11 @@ int main(){
     NewList.Append_Node(7);
     NewList.Insert_Pos_Node(10,1);
     NewList.Insert_Pos_Node(30,0);
+    NewList.Display();
+    NewList.Delete_Beg_Node();
+    NewList.Display();
+    NewList.Pop_Node();
+    NewList.Display();
+    NewList.Delete_Pos_Node(5);
     NewList.Display();
 }
