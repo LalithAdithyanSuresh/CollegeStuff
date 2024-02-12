@@ -200,13 +200,17 @@ class List{
 
         // Display the contents of the List
         void Display(){
-            CurrentPoint = Head;
-            printf("[");
-            while(CurrentPoint->Next != nullptr){
-                printf("%d,",CurrentPoint->data);
-                CurrentPoint = CurrentPoint->Next;
+            if(IsEmpty()==0){
+                CurrentPoint = Head;
+                printf("[");
+                while(CurrentPoint->Next != nullptr){
+                    printf("%d,",CurrentPoint->data);
+                    CurrentPoint = CurrentPoint->Next;
+                }
+                printf("%d]",CurrentPoint->data);
+            }else{
+                printf("[]");
             }
-            printf("%d]",CurrentPoint->data);
         }
 };
 
