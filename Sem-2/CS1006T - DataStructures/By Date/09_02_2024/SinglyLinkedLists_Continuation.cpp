@@ -165,6 +165,25 @@ class List{
             }
             return 0;
         }
+        int SearchNode(int val){
+            int pos = 0;
+            CurrentPoint = Head;
+            if(IsEmpty()==0){
+                while(CurrentPoint->data != val && CurrentPoint->Next != nullptr){
+                    CurrentPoint = CurrentPoint->Next;
+                    pos++;
+                }
+                if(CurrentPoint->data == val){
+                    return pos;
+                }
+                else{
+                    return -1;
+                }
+            }
+            return -1;
+            
+        }
+
         // Display the contents of the List
         void Display(){
             CurrentPoint = Head;
@@ -176,26 +195,99 @@ class List{
             printf("%d]",CurrentPoint->data);
         }
 
+
 };
 
-// i )  Insert At Beginning
+
+
 int main(){
 
     List NewList;
-
-    NewList.Insert_Beg_Node(2);
-    NewList.Insert_Beg_Node(3);
-    NewList.Insert_Beg_Node(4);
-    NewList.Append_Node(5);
-    NewList.Append_Node(6);
-    NewList.Append_Node(7);
-    NewList.Insert_Pos_Node(10,1);
-    NewList.Insert_Pos_Node(30,0);
-    NewList.Display();
-    NewList.Delete_Beg_Node();
-    NewList.Display();
-    NewList.Pop_Node();
-    NewList.Display();
-    NewList.Delete_Pos_Node(5);
-    NewList.Display();
+    int opt,var,pos,variable;
+    while(1==1){
+        system("cls");
+        printf("\n-------------------------------------------------\nOptions : \n\t0-Exit\n\t1-Insert At Beginning\n\t2-Appending\n\t3-Insertion\n\t4-Delete beginning\n\t5-Pop\n\t6-Deletetion\n\t7-Search\n\t8-Display\n>>> ");
+        scanf("%d",&opt);
+        system("cls");
+        switch (opt)
+        {
+        case 0:
+            return 0;
+        case 1:
+            printf("\nValue : ");
+            scanf("%d",&var);
+            if(NewList.Insert_Beg_Node(var)==1){
+                printf("\nInserted Successful");
+            }else{
+                printf("\nList is Full :(");
+            }
+            break;
+        case 2:
+            printf("Value to append :  ");
+            scanf("%d",&var);
+            if(NewList.Append_Node(var)==1){
+                printf("\nInserted Successful");
+            }else{
+                printf("\nList is Full :(");
+            }
+            break;
+        case 3:
+            printf("Value to Insert :  ");
+            scanf("%d",&var);
+            printf("Position to Insert :  ");
+            scanf("%d",&pos);
+            variable = NewList.Insert_Pos_Node(var,pos);
+            if(variable==1){
+                printf("\nInserted Successful");
+            }else if(variable==0){
+                printf("\nList is Full :(");
+            }else{
+                printf("Invalid Position");
+            }
+            break;
+        case 4:
+            if(NewList.Delete_Beg_Node()==1){
+                printf("\nDeleted Successfully");
+            }else{
+                printf("\nList is Empty :(");
+            }
+            break;
+        case 5:
+            if(NewList.Pop_Node()==1){
+                printf("\nPopped Successfully");
+            }else{
+                printf("\nList is Empty :(");
+            }
+            break;
+        case 6:
+            printf("Position to Remove :  ");
+            scanf("%d",&pos);
+            if(NewList.Delete_Pos_Node(pos)==1){
+                printf("\nDeleted Successfully");
+            }else{
+                printf("\nList is Empty :(");
+            }
+            break;
+        case 7:
+            printf("Element to search :  ");
+            scanf("%d",&var);
+            pos = NewList.SearchNode(var);
+            if(pos!=-1){
+                printf("\nFound Element In index :%d",pos);
+            }else{
+                printf("\nElement Not Found in List");
+            }
+            break;
+        case 8:
+            printf("Values in List : ");
+            NewList.Display();
+            break;
+        default:
+            printf("Invalid Choise\n");
+            break;
+        }
+        printf("\n(Press any key to continue)");
+        getchar();
+        getchar();
+    }
 }
