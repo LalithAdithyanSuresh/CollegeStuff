@@ -51,14 +51,17 @@ class List{
         List(){
             Head = nullptr;
         }
+        
         // Create New Node And return Pointer
         struct Node * CreateNode(){
             return (struct Node *)malloc(sizeof(struct Node));
         }
+
         // Delete and free memoryof the Node
         void DeleteNode(struct Node *del){
             free(del);
         }
+
         // Check if the List is empty
         int IsEmpty(){
             if (Head==nullptr){
@@ -68,6 +71,7 @@ class List{
             }
             
         }
+
         // Insert a New Node in the beginning
         int Insert_Beg_Node(int val){
             NewNode = CreateNode();
@@ -76,6 +80,7 @@ class List{
             Head = NewNode;
             return 1;
         }
+
         // Add a new node to the end
         int Append_Node(int val){
             if(IsEmpty()==0){
@@ -89,8 +94,8 @@ class List{
                 CurrentPoint->Next = NewNode;
                 return 1;
             }return 0;
-            
         }
+
         // Insert A new Node with the given position
         int Insert_Pos_Node(int val ,int pos){
             if(pos == 0){
@@ -113,6 +118,7 @@ class List{
                 return 1;
             }return 0;
         }
+
         // Delete the beginning Node
         int Delete_Beg_Node(){
             if(IsEmpty()==0){
@@ -125,6 +131,7 @@ class List{
                 return 0;
             }
         }
+
         // Remove the last Node
         int Pop_Node(){
             if(IsEmpty()==0){
@@ -141,6 +148,7 @@ class List{
                 return 0;
             }
         }
+
         // Delete the node at given index
         int Delete_Pos_Node(int pos){
             if(pos == 0){
@@ -165,6 +173,8 @@ class List{
             }
             return 0;
         }
+
+        // Search the index of a given Value
         int SearchNode(int val){
             int pos = 0;
             CurrentPoint = Head;
