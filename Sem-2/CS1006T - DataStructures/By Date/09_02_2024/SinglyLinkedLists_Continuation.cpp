@@ -208,8 +208,6 @@ class List{
             }
             printf("%d]",CurrentPoint->data);
         }
-
-
 };
 
 
@@ -300,7 +298,7 @@ int main(){
             printf("Invalid Choise\n");
             break;
         }
-        printf("\n(Press any key to continue)");
+        printf("\n\n(Press ENTER key to continue)");
         getchar();
         getchar();
     }
