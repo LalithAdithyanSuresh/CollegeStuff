@@ -51,7 +51,7 @@ class List{
         List(){
             Head = nullptr;
         }
-        
+
         // Create New Node And return Pointer
         struct Node * CreateNode(){
             return (struct Node *)malloc(sizeof(struct Node));
@@ -93,7 +93,11 @@ class List{
                 NewNode->Next = nullptr;
                 CurrentPoint->Next = NewNode;
                 return 1;
-            }return 0;
+            }else{
+                Insert_Beg_Node(val);
+                return 1;
+            }
+            return 0;
         }
 
         // Insert A new Node with the given position
