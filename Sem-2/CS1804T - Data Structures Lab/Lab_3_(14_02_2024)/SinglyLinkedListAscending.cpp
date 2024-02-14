@@ -77,35 +77,36 @@ class List{
 
         // Merge in Ascending
 
-        int Merge(List *b){
-            struct Node *Cur_A = Head;
-            struct Node *Cur_B =b->Head;
-            struct Node *pre_A = Head;
-            while(Cur_B->Next != nullptr){
-                if(Cur_A->Next == nullptr){ //Insert at the end
+        List Merge(List *other){
+            List NewL;
+            struct Node *Cur;
+            struct Node *Oth;
+            struct Node *New;
+            Cur = Head;
+            Oth = other->Head;
+            New = NewL.Head;
+            while(Cur!=nullptr || Oth!=nullptr){
+                if(Cur == nullptr || Cur->data >= Oth->data){
                     NewNode = CreateNode();
-                    NewNode->data = Cur_B->data;
-                    NewNode->Next = nullptr;
-                    Cur_A->Next = NewNode;
-                    Cur_B= Cur_B->Next;
-                }else if(Cur_A->data >= Cur_B->data){//Insert before
-                    if(Cur_A == Head){ //start
-                        Insert_Beg_Node(Cur_B->data);
-                        Cur_B = Cur_B->Next;
-                    }else{
-                        NewNode = CreateNode(); //at pos
-                        NewNode->data = Cur_B->data;
-                        NewNode->Next = pre_A->Next;
-                        pre_A->Next = NewNode;
-                        Cur_B= Cur_B->Next;
-
-                    }
+                    NewNode->data = Oth->data;
+                    Oth = Oth->Next;
                 }else{
-                    pre_A = Cur_A;
-                    Cur_A = Cur_A->Next;
+                    NewNode = CreateNode();
+                    NewNode->data = Cur->data;
+                    Cur = Cur->Next;
+                }
+                NewNode->Next = nullptr;
+                if(New == nullptr){
+                    NewL.Head = NewNode;
+                    New = NewL.Head;
+                }else{
+                    New->Next = NewNode;
+                    New = New->Next;
                 }
             }
-            return 1;
+            return NewL;
+
+
         }
         // Display
         void Display(){
@@ -126,13 +127,21 @@ class List{
 
 int main(){
 
-    List NewList;
-    int opt,var;
+    List NewList[3];
+    int opt,var,listUse;
     while(1==1){
-        system("clear");
-        printf("\n-------------------------------------------------\nOptions : \n\t0-Exit\n\t1-Insert At Beginning\n\t2-Appending\n\t3-Insertion\n\t4-Delete beginning\n\t5-Pop\n\t6-Deletetion\n\t7-Search\n\t8-Display\n\t9-Reverse Display\n\t10-Reverse\n>>> ");
+        system("cls");
+        printf("\n-------------------------------------------------\nSelect List to Use:\n\t1 - List 1\n\t2 - List 2\n\t3 - List 3\n>>> ");
+        scanf("%d",&listUse);
+        if(!(listUse==1 || listUse == 2 || listUse == 3)){
+            printf("Wrong Option : (");
+            continue;
+        }
+        system("cls");
+        printf("\n-------------------------------------------------\nOptions for List - %d : \n\t0-Exit\n\t1-Insert in Ascending\n\t2-Merge\n\t3-Display\n>>> ",listUse);
         scanf("%d",&opt);
-        system("clear");
+        system("cls");
+        listUse--;
         switch (opt)
         {
         case 0:
@@ -140,32 +149,24 @@ int main(){
         case 1:
             printf("\nValue : ");
             scanf("%d",&var);
-            if(NewList.Insert_asc(var)==1){
+            if(NewList[listUse].Insert_asc(var)==1){
                 printf("\nInserted Successful");
             }else{
                 printf("\nList is Full : ");
             }
             break;
-        // case 2:
-        //     printf("Value to append :  ");
-        //     scanf("%d",&var);
-        //     if(NewList.Append_Node(var)==1){
-        //         printf("\nInserted Successful");
-        //     }else{
-        //         printf("\nList is Full :(");
-        //     }
-        //     break;
+        case 2:
+            if(listUse == 0){
+                NewList[2] = NewList[listUse].Merge(&NewList[listUse+1]);
+            }else if(listUse == 1){
+                NewList[2] = NewList[listUse].Merge(&NewList[listUse-1]);
+            }
+            printf("Merged Lists :  ");
+            break;
         case 3:
             printf("Values in List : ");
-            NewList.Display();
+            NewList[listUse].Display();
             break;
-        // case 4:
-        //     if(NewList.Delete_Beg_Node()==1){
-        //         printf("\nDeleted Successfully");
-        //     }else{
-        //         printf("\nList is Empty :(");
-        //     }
-        //     break;
         default:
             printf("Invalid Choise\n");
             break;
@@ -175,37 +176,3 @@ int main(){
         getchar();
     }
 }
-// int main(){
-//     List a;
-//     List b;
-//     a.Insert_asc(10);
-//     a.Insert_asc(20);
-//     a.Insert_asc(30);
-//     a.Insert_asc(40);
-//     a.Insert_asc(50);
-//     a.Insert_asc(60);
-//     a.Insert_asc(70);
-//     a.Insert_asc(80);
-//     a.Insert_asc(90);
-//     a.Insert_asc(100);
-//     a.Insert_asc(110);
-//     a.Insert_asc(120);
-
-//     b.Insert_asc(15);
-//     b.Insert_asc(25);
-//     b.Insert_asc(55);
-//     b.Insert_asc(75);
-//     b.Insert_asc(85);
-//     b.Insert_asc(35);
-//     b.Insert_asc(45);
-//     b.Insert_asc(65);
-//     b.Insert_asc(55);
-//     b.Insert_asc(15);
-//     printf("\na = ");
-//     a.Display();
-//     printf("\nb = ");
-//     b.Display();
-//     printf("\na = ");
-//     a.Merge(&b);
-//     a.Display();
-// }
