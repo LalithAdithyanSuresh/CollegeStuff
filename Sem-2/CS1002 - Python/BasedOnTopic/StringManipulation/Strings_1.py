@@ -1,0 +1,1 @@
+# isalpha(),isnumeric(),isdecimal(),replace(),lstrip(),rstrip(),strip(),split()
