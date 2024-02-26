@@ -2,15 +2,17 @@
 
 import re
 
-m = re.findall('^[A-Za-z][A-Za-z \.]{3}','Lalith Adithyan S')
+m = re.findall('^[A-Za-z][A-Za-z \.]','Lalith Adithyan S')
 print(m)
 
 
-# email = re.findall('[A-Za-Z]@[A-Za-Z].\[A-Za-Z]','lalithadithyansuresh@gmail.com')
+email = re.findall('[A-Za-Z]@[A-Za-Z]+@gmail\.com','lalithadithyansuresh@gmail.com')
 # print(email)
+con ='^[A-Za-z][0-9]{3}[_][A-Za-z]{2,}'
 
+pattern = re.findall('^[A-Za-z][0-9]{3}[_][A-Za-z]{2,}','A424_iwffs5')
+pattern1 = re.match(con,'A424_iwffs5')
 
-pattern = re.findall('^[A-Za-z][0-9]{3}[_][A-Za-z]{2,}$','A424_iwffs')
-pattern1 = re.match('^[A-Za-z][0-9]{3}[_][A-Za-z]{2,}$','A424_iwffs')
-print(type(pattern))
-print(type(pattern1))
+b = re.search('^[A-Za-z][0-9]{3}[_][A-Za-z]{2,}','A424_iwffs5')
+print(pattern)
+print(pattern1,b.group())
