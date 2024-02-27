@@ -1,0 +1,84 @@
+I - unit
+
+1 - Types of data , struc,semi,  | examples cases of use
+2 - Big data ecosystem , haddom, spark,
+3 - 7 steps
+
+
+
+II - unit
+
+1 - SciPy - Skeqness, Sklearn
+
+
+
+
+5x5 data importing > data cleanign > Mean, mode median > matplotlib
+
+string operations (RegEx)
+
+
+III unit
+
+1. Data prograession
+2. where is data taken from
+3 . Structured > Semi-structured ( JSON )
+
+
+
+
+Fill with median or mode..
+With eratic data scaling using minMaxScaler and z-score.
+
+
+
+
+
+categorical column > string type | 
+	1. One hot encoding
+	2. Label encoding
+
+Nominal data vs ordinal data
+
+Nominal : State,Name,Gender
+Ordinal : Grades.
+
+1 hot encoding is when unique values in a nominal column is taken as seperate columns and is entered with 0 and 1 to show that the row has that column
+
+
+
+
+
+
+uni veri analysis
+multi veri analysis
+
+co-relation
+multi-co-linearity
+
+
+
+
+Sort in ascending order
+find median
+cut the values in to hapf again at the median and find the median for those again.s
+spliting at the medians again willresult in 4 segments..
+the two quadrants at each end will contain the outliers..
+
+i = IQR = Q3 - Q1
+Lower fence = Q1 - 1.5 IQR
+Upper fence = Q3 + 1.5 IQR
+
+
+defentions for mean mode covariance
+variance
+
+
+
+simple random sampeling
+systematic sampleing ( some rule )
+Statified sampeling ( overalping sample)
+Cluster sampleing ( non - sampeling )
+
+
+SNOWBALL sampoleimng ( 5 sample calls 5 other sample each and creates a larger sample space )
