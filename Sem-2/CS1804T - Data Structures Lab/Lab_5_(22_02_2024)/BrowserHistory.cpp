@@ -65,18 +65,6 @@ int main(){
             break;
         case 4:
             return 0;
-        case 8:
-            printf("Displaying List = > ");
-            list.Display();
-            printf("\n");
-            break;
-        // case 5:
-            // if(list.Delete_end_node()==1){
-            //     printf("Deleted the last node");
-            // }else{
-            //     printf("Error in deleting the last node");
-            // }
-            // break;
         default:
             break;
         }
