@@ -68,6 +68,6 @@ char Stack::Display(){
     if(IsEmpty()==0){
         return Head->data;
     }else{
-        return '_';
+        return '~';
     }
 }
