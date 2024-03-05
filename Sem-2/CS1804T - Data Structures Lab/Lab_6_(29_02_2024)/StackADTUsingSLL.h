@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-class List{
+class Stack{
     private:
         struct Node{
             char data;
@@ -12,7 +12,7 @@ class List{
         struct Node *CurrentPoint;
         struct Node *NewNode;
     public:
-        List(){
+        Stack(){
             Head = nullptr;
         }
         struct Node * CreateNode();
@@ -23,17 +23,17 @@ class List{
         char Display();
 };
 // Create New Node And return Pointer
-struct List::Node * List::CreateNode(){
+struct Stack::Node * Stack::CreateNode(){
     return (struct Node *)malloc(sizeof(struct Node));
 }
 
 // Delete and free memoryof the Node
-void List::DeleteNode(struct Node *del){
+void Stack::DeleteNode(struct Node *del){
     free(del);
 }
 
-// Check if the List is empty
-int List::IsEmpty(){
+// Check if the Stack is empty
+int Stack::IsEmpty(){
     if (Head==nullptr){
         return 1;
     }else{
@@ -43,7 +43,7 @@ int List::IsEmpty(){
 }
 
 // Insert a New Node in the beginning
-int List::Insert_Beg_Node(char val){
+int Stack::Insert_Beg_Node(char val){
     NewNode = CreateNode();
     NewNode->data = val;
     NewNode->Next = Head;
@@ -52,9 +52,8 @@ int List::Insert_Beg_Node(char val){
 }
 
 // Delete the beginning Node
-int List::Delete_Beg_Node(){
+int Stack::Delete_Beg_Node(){
     if(IsEmpty()==0){
-        printf("POPPED Element = > %c",Head->data);
         CurrentPoint = Head;
         Head = CurrentPoint->Next;
         DeleteNode(CurrentPoint);
@@ -64,8 +63,8 @@ int List::Delete_Beg_Node(){
         return 0;
     }
 }
-// Display the top of the list of the List
-char List::Display(){
+// Display the top of the Stack of the Stack
+char Stack::Display(){
     if(IsEmpty()==0){
         return Head->data;
     }else{

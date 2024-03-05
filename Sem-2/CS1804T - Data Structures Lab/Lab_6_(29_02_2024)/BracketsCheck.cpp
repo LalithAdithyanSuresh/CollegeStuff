@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 int main(){
-    List stack;
+    Stack stack;
     int o=0,opt,n;
     while (1==1)
     {
@@ -31,6 +31,7 @@ int main(){
                     printf("\nThe paranthesis are not balanced");
                     break;
                 }
+                stack.Delete_Beg_Node();
             }
             if(o == 0){
                 printf("\nThe Check is valid");
