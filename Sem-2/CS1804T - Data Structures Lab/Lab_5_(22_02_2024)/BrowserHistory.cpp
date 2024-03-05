@@ -48,7 +48,7 @@ int main(){
         case 2:
             printf("Go Back");
             val = list.Go_Prev();
-            if(val != -1){
+            if(val == -1){
                 printf("Cannot go back in history");
             }else{
                 printf("Moved back > Current page : %d",val);
@@ -57,7 +57,7 @@ int main(){
         case 3:
             printf("Go Front");
             val = list.Go_Next();
-            if(val != -1){
+            if(val == -1){
                 printf("Cannot go front in history");
             }else{
                 printf("Moved front > Current page : %d",val);
@@ -110,13 +110,15 @@ int DLList::NewWebPage(){
     C_Node->N_Node = nullptr;
     C_Node->P_Node = nullptr;
     if(IsEmpty()==0){
+        New_Node = C_Node;
         Delete_nodes_After();
+        C_Node = New_Node;
         CurrentWebPage->N_Node = C_Node;
         C_Node->P_Node = CurrentWebPage;
     }else{
         Head = C_Node;
-        Tail = C_Node;
     }
+    Tail = C_Node;
     CurrentWebPage = C_Node;
     return ID-1;
 }
