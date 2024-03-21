@@ -1,0 +1,31 @@
+Regressions
+    - Linear Regression (simple)
+        Output is ready
+    - Logistic Regression   
+        Output is a probability
+
+
+Machine Learning ->  sklearn
+
+
+Get DF ready and cleaned
+split the Dependent columns form the independet ones
+Split Df datas into Train and Test. (70-30 || 80-20)
+
+Split parameters - statified,shuffle
+
+-> The output is different on every run due to shuffled splitting
+-> To prevent this the random state is stored with a reference so that he output is similar   | (Seperate Concept)
+
+SKLEARN SPLIT >>> https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+
+accuracies - Teting, training
+
+X(train) -> Y(train) -> Y(predicit)        |    Training Accuracy
+With the trained model :
+    X(test) - Y(test) -> Y(predicit)       |    Model Accuracy
+
+
+
+Training Data : Fit_Transform
+Testing Data : Transform
