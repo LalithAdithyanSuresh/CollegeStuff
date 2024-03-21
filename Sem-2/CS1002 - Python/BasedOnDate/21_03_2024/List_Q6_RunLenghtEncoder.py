@@ -1,4 +1,4 @@
-# Create a py scrip to create a run time encoder
+# Create a py scrip to create a run length encoder
 
 ini = eval('['+input("Enter the list seperated by commas : ") + ']')
 out = []
