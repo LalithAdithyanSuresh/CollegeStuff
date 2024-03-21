@@ -83,6 +83,9 @@ while True:
     time.sleep(0.5)
     if(pyperclip.paste()=='Selva Akash SNU'):
         Remove(r=True)
-    time.sleep(5)
+    # else:
+    #     pyperclip.copy('Selva Akash SNU')
+    #     Remove(r=True)
+    time.sleep(7)
 
 
