@@ -30,12 +30,14 @@ int main(){
     binTree T1;
     int opt=1,data;
     while (opt!=0){
-        printf("\nOptions : \n\t1 - Insert\n\t4 - Inorder\n\t0 - Exit\n>>");
+        system("cls");
+        system("cls");
+        printf("\nOptions : \n\t1 - Insert\n\t4 - Inorder\n\t0 - Exit\n>>>");
         scanf("%d",&opt);
         switch (opt)
         {
         case 1:
-            printf(">Enter data to insert : ");
+            printf("Enter data to insert : ");
             scanf("%d",&data);
             T1.Insert(data);
             break;
@@ -47,6 +49,9 @@ int main(){
         default:
             break;
         }
+        printf("\n\n(Press enter to continue)");
+        getchar();
+        getchar();
     }
 }
 
@@ -71,7 +76,7 @@ void binTree::recInsert(int val,int dir,struct Node*Root){
             newNode->Left = nullptr;
             newNode->Right = nullptr;
         }else{
-            printf("Enter the Direction : \n\t1 - Left\n\t2 - Right");
+            printf("\n--Currently at Node : ( %d )\n\nEnter the Direction : \n\t1 - Left\n\t2 - Right\n>>>",Root->data);
             scanf("%d",&dir);
             recInsert(val,dir,Root->Left);
         }
@@ -84,7 +89,7 @@ void binTree::recInsert(int val,int dir,struct Node*Root){
             newNode->Left = nullptr;
             newNode->Right = nullptr;
         }else{
-            printf("Enter the Direction : \n\t1 - Left\n\t2 - Right");
+            printf("\n--Currently at Node : ( %d )\n\nEnter the Direction : \n\t1 - Left\n\t2 - Right\n>>>",Root->data);
             scanf("%d",&dir);
             recInsert(val,dir,Root->Right);
         }
@@ -106,7 +111,7 @@ void binTree::Insert(int val){
         newNode->Right = nullptr;
     }else{
         int dir = 0;
-        printf("Enter the Direction : \n\t1 - Left\n\t2 - Right");
+        printf("\n--Currently at Node : ( %d )\n\nEnter the Direction : \n\t1 - Left\n\t2 - Right\n>>>",Root->data);
         scanf("%d",&dir);
         recInsert(val,dir,Root);
     }
