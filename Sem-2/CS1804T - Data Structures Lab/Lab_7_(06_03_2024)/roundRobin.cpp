@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "CircularPriorityQueue_Program.h"
 #include "CircularQueue_Program.h"
 
@@ -31,6 +32,7 @@ void NextClockCycle(){
     if(E_P!=nullptr && (E_Time == Q_Time || E_P->B_time-1 <=0)){
         if(E_P->B_time-1 <= 0){
             printf("\nP-%d has completed Execution",E_P->P_Num);
+            free(E_P);
             E_P = nullptr;
         }else{
             E_P->B_time--;
