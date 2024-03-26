@@ -1,0 +1,27 @@
+import pyautogui
+import time
+
+while True:
+    time.sleep(30)
+    pyautogui.moveTo(200,160)
+    pyautogui.click()
+    time.sleep(1)
+    pyautogui.typewrite('Harini')
+    time.sleep(0.3)
+    pyautogui.press('tab')
+    pyautogui.typewrite('Ananya')
+    time.sleep(0.3)
+    pyautogui.press('tab')
+    pyautogui.typewrite('Anjana')
+    time.sleep(0.3)
+    pyautogui.press('tab')
+    pyautogui.typewrite('lithikha')
+    time.sleep(0.3)
+    pyautogui.press('tab')
+    time.sleep(0.1)
+    pyautogui.moveTo(1150,450)
+    pyautogui.click()
+    pyautogui.typewrite('COE - Sem 1 Results for B.tech')
+    time.sleep(0.5)
+    pyautogui.moveTo(1060,240)
+    pyautogui.click()
