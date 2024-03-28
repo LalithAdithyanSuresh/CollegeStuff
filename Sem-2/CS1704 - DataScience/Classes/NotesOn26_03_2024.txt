@@ -1,0 +1,9 @@
+Best fit Line
+
+Residuals -> Square
+SUm of Residuals
+
+Start woth the generic line expression : y = ax+b 
+                                            (a = slope | b = intercept)
+                            
+Least Squares are derived by finding the correct values of a and b  (sweet spot)
