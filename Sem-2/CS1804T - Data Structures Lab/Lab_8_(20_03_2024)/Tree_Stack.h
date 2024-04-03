@@ -50,6 +50,7 @@ struct Tree::T_Node *Tree::CreateNode(){
     return (struct T_Node *)malloc(sizeof(struct T_Node));
 }
 // Method to Create the binary Tree form the post fix expression
+// Time Complexity => O(n)
 int Tree::ConstructExp(char *array,int n,class Stack *S){
     int Operators=0,Operands=0;
     for(int i = 0;i<n;i++){
@@ -88,6 +89,8 @@ int Tree::ConstructExp(char *array,int n,class Stack *S){
 }
 
 // Method to recursively Print in PREORDER
+// Time Complexity => O(n)
+
 void Tree::PreOrderRec(struct T_Node *Root){
     printf(" %c ",Root->data);
     if(Root->Left != nullptr){
@@ -100,6 +103,8 @@ void Tree::PreOrderRec(struct T_Node *Root){
 
 
 // Method to print data of tree PreORDER
+// Time Complexity => O(n)
+
 void Tree::PreOrder(){
     if(Root != nullptr){
         PreOrderRec(Root);
@@ -110,6 +115,8 @@ void Tree::PreOrder(){
 }
 
 // Method to recursively Print in INORDER
+// Time Complexity => O(n)
+
 void Tree::InOrderRec(struct T_Node *Root){
     if(Root->Left != nullptr){
         InOrderRec(Root->Left);
@@ -121,6 +128,8 @@ void Tree::InOrderRec(struct T_Node *Root){
 }
 
 // Method to print data of tree InORDER
+// Time Complexity => O(n)
+
 void Tree::InOrder(){
     if(Root != nullptr){
         InOrderRec(Root);
@@ -131,6 +140,8 @@ void Tree::InOrder(){
 }
 
 // Method to recursively Print in POSTORDER
+// Time Complexity => O(n)
+
 void Tree::PostOrderRec(struct T_Node *Root){
     if(Root->Left != nullptr){
         PostOrderRec(Root->Left);
@@ -143,6 +154,8 @@ void Tree::PostOrderRec(struct T_Node *Root){
 
 
 // Method to print data of tree POSTORDER
+// Time Complexity => O(n)
+
 void Tree::PostOrder(){
     if(Root != nullptr){
         PostOrderRec(Root);
@@ -162,6 +175,8 @@ struct Stack::S_Node * Stack::CreateNode(){
 }
 
 // Method to Push a new Node into stack
+// Time Complexity => O(1)
+
 int Stack::push(Tree::T_Node *TreeNode){
     NewNode = CreateNode();
     NewNode->Data = TreeNode;
@@ -174,6 +189,8 @@ int Stack::push(Tree::T_Node *TreeNode){
 }
 
 // Method to Pop a Node from the stack
+// Time Complexity => O(1)
+
 struct Tree::T_Node* Stack::pop(){
     struct Tree::T_Node *data;
     data = nullptr;

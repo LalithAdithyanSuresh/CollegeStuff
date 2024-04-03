@@ -19,6 +19,7 @@ class binTree{
         void recInOrder(struct Node*);
         void recPreOrder(struct Node*);
         void recPostOrder(struct Node*);
+        void DeleteRec(struct Node*,int);
     
     public:
         binTree(){
@@ -80,8 +81,8 @@ int main(){
             break;
         }
         printf("\n\n(Press enter to continue)");
-        // getchar();
-        // getchar();
+        getchar();
+        getchar();
     }
 }
 
@@ -95,6 +96,7 @@ struct binTree::Node * binTree::CreateNode(){
 }
 
 // A recursive method to insert a New Node
+// Time Complexity => O(logn)
 void binTree::recInsert(int val,int dir,struct Node*Root){
     printf("\n--Currently at Node : ( %d )",Root->data);
     switch (dir)
@@ -132,6 +134,7 @@ void binTree::recInsert(int val,int dir,struct Node*Root){
 
 
 // Method to Insert A node into the tree
+// Time Complexity => O(logn)
 void binTree::Insert(int val){
     if(Root == nullptr){
         newNode = CreateNode();
@@ -148,6 +151,7 @@ void binTree::Insert(int val){
 }
 
 // Method to print data of the tree recursively and INORDER
+// Time Complexity => O(n)
 void binTree::recInOrder(struct Node *Root){
     if(Root->Left != nullptr){
         recInOrder(Root->Left);
@@ -160,6 +164,8 @@ void binTree::recInOrder(struct Node *Root){
 
 
 // Method to print data of tree INORDER
+// Time Complexity => O(n)
+
 void binTree::InOrder(){
     if(Root != nullptr){
         recInOrder(Root);
@@ -170,6 +176,8 @@ void binTree::InOrder(){
 }
 
 // Method to print data of the tree recursively and PREORDER
+// Time Complexity => O(n)
+
 void binTree::recPreOrder(struct Node *Root){
     printf(" %d ",Root->data);
     if(Root->Left != nullptr){
@@ -182,6 +190,8 @@ void binTree::recPreOrder(struct Node *Root){
 
 
 // Method to print data of tree PREORDER
+// Time Complexity => O(n)
+
 void binTree::PreOrder(){
     if(Root != nullptr){
         recPreOrder(Root);
@@ -193,6 +203,8 @@ void binTree::PreOrder(){
 
 
 // Method to print data of the tree recursively and POSTORDER
+// Time Complexity => O(n)
+
 void binTree::recPostOrder(struct Node *Root){
     if(Root->Left != nullptr){
         recPostOrder(Root->Left);
@@ -205,6 +217,8 @@ void binTree::recPostOrder(struct Node *Root){
 
 
 // Method to print data of tree POSTORDER
+// Time Complexity => O(n)
+
 void binTree::PostOrder(){
     if(Root != nullptr){
         recPostOrder(Root);
@@ -215,6 +229,8 @@ void binTree::PostOrder(){
 }
 
 // Recursive method to earch for a value in the tree using preorder
+// Time Complexity => O(n)
+
 int binTree::recSearch(int val,struct Node *root){
     if (root == nullptr) {
         return 0;
@@ -226,6 +242,8 @@ int binTree::recSearch(int val,struct Node *root){
 
 
 // Method to search for a value in the tree using Preorder
+// Time Complexity => O(n)
+
 int binTree::Search(int val){
     if(recSearch(val,Root)==1){
         return 1;
@@ -234,59 +252,83 @@ int binTree::Search(int val){
     }
 }
 
-//Method to delete an element form the tree
+//Method to Delete an elemtnt
+// Time Complexity => O(logn)
+
 int binTree::Delete(int val){
-    if(Search(val)==1){
-        if (SearchChild == nullptr) {
-            printf("Element not found in the tree\n");
-            return 0 ;
+    DeleteRec(Root,val);
+    return 1;
+}
+
+//Method to delete an element form the tree RECURSIVE
+// Time Complexity => O(logn)
+
+void binTree::DeleteRec(struct Node*temp,int num){
+    if(temp==nullptr)
+    {
+        return;
+    }
+    if(temp->Left!=nullptr && temp->Left->data==num)
+    {
+        if(temp->Left->Left==nullptr && temp->Left->Right==nullptr)
+        {
+            temp->Left=nullptr;
+            return;
         }
-        if (SearchChild->Left == nullptr && SearchChild->Right == nullptr) {
-            if (SearchParent == nullptr) {
-                Root = nullptr;
-            } else if (SearchParent->Left == SearchChild) {
-                SearchParent->Left = nullptr;
-            } else {
-                SearchParent->Right = nullptr;
-            }
-            free(SearchChild);
-        } else if (SearchChild->Left == nullptr && SearchChild->Right != nullptr) {
-            if (SearchParent == nullptr) {
-                Root = SearchChild->Right;
-            } else if (SearchParent->Left == SearchChild) {
-                SearchParent->Left = SearchChild->Right;
-            } else {
-                SearchParent->Right = SearchChild->Right;
-            }
-            free(SearchChild);
-        }  else if (SearchChild->Left != nullptr && SearchChild->Right == nullptr) {
-            if (SearchParent == nullptr) {
-                Root = SearchChild->Left;
-            } else if (SearchParent->Left == SearchChild) {
-                SearchParent->Left = SearchChild->Left;
-            } else {
-                SearchParent->Right = SearchChild->Left;
-            }
-            free(SearchChild);
-        } else {
-            struct Node* Leaf = SearchChild;
-            struct Node* LeafParent = SearchParent;
-            while (!(Leaf->Left ==nullptr && Leaf->Right == nullptr)) {
-                LeafParent = Leaf;
-                if(Leaf->Left !=nullptr){
-                    Leaf = Leaf->Left;
-                }else{
-                    Leaf = Leaf->Right;
-                }
-            }
-            SearchChild->data = Leaf->data;
-            if(LeafParent->Left == Leaf){
-                LeafParent->Left = nullptr;
-            }else{
-                LeafParent->Right = nullptr;
-            }
-            free(Leaf);
+        else if(temp->Left->Left==nullptr && temp->Left->Right!=nullptr)
+        {
+            temp->Left=temp->Left->Right;
+            return;
         }
-        return 1;
-    }return 0;
+        else if(temp->Left->Left!=nullptr && temp->Left->Right==nullptr)
+        {
+            temp->Left=temp->Left->Left;
+            return;
+        }
+        else
+        {
+            struct Node *temp2=temp;
+            while(temp->Left->Left!=nullptr)
+            {
+                temp=temp->Left;
+            }
+            temp2->Left->data=temp->Left->data;
+            temp->Left=nullptr;
+            return;
+        }
+    }
+    else if(temp->Right!=nullptr && temp->Right->data==num)
+    {
+        if(temp->Right->Left==nullptr && temp->Right->Right==nullptr)
+        {
+            temp->Right=nullptr;
+            return;
+        }
+        else if(temp->Right->Left==nullptr && temp->Right->Right!=nullptr)
+        {
+            temp->Right=temp->Right->Right;
+            return;
+        }
+        else if(temp->Right->Left!=nullptr && temp->Right->Right==nullptr)
+        {
+            temp->Right=temp->Right->Left;
+            return;
+        }
+        else
+        {
+            struct Node *temp2=temp;
+            while(temp->Right->Right!=nullptr)
+            {
+                temp=temp->Right;
+            }
+            temp2->Right->data=temp->Right->data;
+            temp->Right=nullptr;
+            return;
+        }
+    }
+    else
+    {
+        DeleteRec(temp->Left,num);
+        DeleteRec(temp->Right,num);
+    }
 }
