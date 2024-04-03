@@ -40,8 +40,8 @@ int main(){
     binTree T1;
     int opt=1,data;
     while (opt!=0){
-        system("cls");
-        system("cls");
+        // system("cls");
+        // system("cls");
         printf("\nOptions : \n\t1 - Insert\n\t2 - Delete\n\t3 - Preorder\n\t4 - Inorder\n\t5 - Postorder\n\t6 - Search\n\t7 - Exit\n\t0 - Exit\n>>>");
         scanf("%d",&opt);
         switch (opt)
@@ -52,6 +52,9 @@ int main(){
             T1.Insert(data);
             break;
         case 2:
+            printf("Enter data to Delete : ");
+            scanf("%d",&data);
+            T1.Delete(data);
             break;
         case 3:
             T1.PreOrder();
@@ -77,8 +80,8 @@ int main(){
             break;
         }
         printf("\n\n(Press enter to continue)");
-        getchar();
-        getchar();
+        // getchar();
+        // getchar();
     }
 }
 
@@ -213,16 +216,10 @@ void binTree::PostOrder(){
 
 // Recursive method to earch for a value in the tree using preorder
 int binTree::recSearch(int val,struct Node *root){
-    if(root==nullptr){
+    if (root == nullptr) {
         return 0;
     }else{
-        if(SearchChild != nullptr && SearchParent == nullptr){
-            SearchParent = root;
-        }
-        if(root->data == val){
-            SearchChild = root;
-        }
-        return (root->data==val || recSearch(val,root->Left) || recSearch(val,root->Right));
+        return (val == root->data || recSearch(val,root->Left) || recSearch(val,root->Right));
     }
 }
 
@@ -230,8 +227,6 @@ int binTree::recSearch(int val,struct Node *root){
 
 // Method to search for a value in the tree using Preorder
 int binTree::Search(int val){
-    SearchChild = nullptr;
-    SearchParent = nullptr;
     if(recSearch(val,Root)==1){
         return 1;
     }else{
@@ -242,6 +237,56 @@ int binTree::Search(int val){
 //Method to delete an element form the tree
 int binTree::Delete(int val){
     if(Search(val)==1){
-        
+        if (SearchChild == nullptr) {
+            printf("Element not found in the tree\n");
+            return 0 ;
+        }
+        if (SearchChild->Left == nullptr && SearchChild->Right == nullptr) {
+            if (SearchParent == nullptr) {
+                Root = nullptr;
+            } else if (SearchParent->Left == SearchChild) {
+                SearchParent->Left = nullptr;
+            } else {
+                SearchParent->Right = nullptr;
+            }
+            free(SearchChild);
+        } else if (SearchChild->Left == nullptr && SearchChild->Right != nullptr) {
+            if (SearchParent == nullptr) {
+                Root = SearchChild->Right;
+            } else if (SearchParent->Left == SearchChild) {
+                SearchParent->Left = SearchChild->Right;
+            } else {
+                SearchParent->Right = SearchChild->Right;
+            }
+            free(SearchChild);
+        }  else if (SearchChild->Left != nullptr && SearchChild->Right == nullptr) {
+            if (SearchParent == nullptr) {
+                Root = SearchChild->Left;
+            } else if (SearchParent->Left == SearchChild) {
+                SearchParent->Left = SearchChild->Left;
+            } else {
+                SearchParent->Right = SearchChild->Left;
+            }
+            free(SearchChild);
+        } else {
+            struct Node* Leaf = SearchChild;
+            struct Node* LeafParent = SearchParent;
+            while (!(Leaf->Left ==nullptr && Leaf->Right == nullptr)) {
+                LeafParent = Leaf;
+                if(Leaf->Left !=nullptr){
+                    Leaf = Leaf->Left;
+                }else{
+                    Leaf = Leaf->Right;
+                }
+            }
+            SearchChild->data = Leaf->data;
+            if(LeafParent->Left == Leaf){
+                LeafParent->Left = nullptr;
+            }else{
+                LeafParent->Right = nullptr;
+            }
+            free(Leaf);
+        }
+        return 1;
     }return 0;
 }
