@@ -1,41 +1,3 @@
-
-#include <stdio.h>
-#include <stdlib.h>
-
-class List{
-    private:
-        struct Node{
-            int data;
-            struct Node *Next;
-        };
-        struct First3{
-            int F,M,L;
-        };
-        struct Node *Head;
-        struct Node *CurrentPoint;
-        struct Node *NewNode;
-    public:
-        List(){
-            Head = nullptr;
-        }
-        struct Node *CreateNode();
-        void DeleteNode(struct Node *);
-        int IsEmpty();
-        int Insert_Beg_Node(int);
-        int Append_Node(int);
-        int Insert_Pos_Node(int,int);
-        int Delete_Beg_Node();
-        int Pop_Node();
-        int Delete_Pos_Node(int);
-        int SearchNode(int);
-        struct First3 firstThree();
-        void Display();
-        void recursiveDisp(struct Node *);
-        void Rev_Display();
-        void recursiveRev(struct Node *);
-        void Rev_Nodes();
-};
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -45,14 +7,21 @@ class List{
             char data;
             struct Node *Next;
         };
+        
         struct Node *Head;
         struct Node *Tail;
         struct Node *CurrentPoint;
         struct Node *NewNode;
     public:
+        struct First3{
+            char F,M,L;
+        };
+        struct First3 *val;
         List(){
+            val = (struct First3*)malloc(sizeof(struct First3));
             Head = nullptr;
         }
+        struct First3 *firstThree();
         struct Node *CreateNode();
         void DeleteNode(struct Node *);
         int IsEmpty();
@@ -256,12 +225,12 @@ void List::Rev_Nodes(){
     }
 }
 
-struct List::First3 List::firstThree(){
+struct List::First3 *List::firstThree(){
     if(Head!=nullptr && Head->Next !=nullptr && Head->Next->Next != nullptr){
-        struct First3 val;
-        val.F = Head->data;
-        val.M = Head->Next->data;
-        val.L = Head->Next->Next->data;
+        val->F = Head->data;
+        val->M = Head->Next->data;
+        val->L = Head->Next->Next->data;
         return val;
     }
+    return nullptr;
 }
