@@ -60,26 +60,7 @@ int main(){
             break;
         }
     }
-    HT1.Insert(12);
-    HT1.Insert(13);
-    HT1.Insert(14);
-    HT1.Insert(15);
-    HT1.Insert(22);
-    HT1.Insert(16);
-    HT1.Insert(182);
-    HT1.Display();
-    if(HT1.Search(22)){
-        printf("Found 22");
-    }
-    HT1.Delete(22);
-    HT1.Display();
-    HT1.Delete(12);
-    HT1.Display();
-    if(HT1.Search(22)){
-        printf("Found 22");
-    }
-    HT1.Delete(16);
-    HT1.Display();
+    
 }
 
 struct Hash::Node * Hash::CreateNode(){
