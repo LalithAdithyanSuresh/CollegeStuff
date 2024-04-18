@@ -19,6 +19,7 @@ except:
 
 # Output Folder Check
 try:
+    flag = 1
     OutputFiles = os.listdir(OutputFolder)
     if(len(OutputFiles)>0):
         print("Files already exist in the Output Folder")
@@ -29,9 +30,10 @@ try:
             os.mkdir(OutputFolder)
         else:
             print("Program exiting")
-            exit()
+            flag = 0
 except:
-    os.mkdir(OutputFolder)
+    if flag==1 :
+        os.mkdir(OutputFolder)
 
 
 for i in InputFiles:
