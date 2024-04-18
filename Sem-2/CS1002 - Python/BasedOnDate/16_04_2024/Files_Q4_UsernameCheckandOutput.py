@@ -45,6 +45,8 @@ for i in InputFiles:
             valid = ''
             for k in range(len(user)):
                 if(user[k].isalnum() or user[k]=='.' or user[k]=='_' or user[k]=='-'):
+                    if(k==0 and user[k].isnumeric()):
+                        continue
                     valid+=user[k]
                 elif(user[k]=='@'):
                     break
