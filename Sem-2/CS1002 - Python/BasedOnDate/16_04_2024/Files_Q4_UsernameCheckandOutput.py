@@ -24,7 +24,7 @@ try:
         print("Files already exist in the Output Folder")
         if(input("\nDo you want to overwrite the folder's contents? (y/n)") == 'y'):
             for i in OutputFiles:
-                os.rmdir(OutputFolder+'/'+i)
+                os.remove(OutputFolder+'/'+i)
             os.rmdir(OutputFolder)
             os.mkdir(OutputFolder)
         else:
