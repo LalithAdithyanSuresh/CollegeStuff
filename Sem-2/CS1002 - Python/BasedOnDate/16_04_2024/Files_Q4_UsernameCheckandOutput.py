@@ -20,10 +20,11 @@ except:
 # Output Folder Check
 try:
     OutputFiles = os.listdir(OutputFolder)
-    if(len(OutputFiles)>1):
+    if(len(OutputFiles)>0):
         print("Files already exist in the Output Folder")
         if(input("\nDo you want to overwrite the folder's contents? (y/n)") == 'y'):
             os.rmdir(OutputFolder)
+            os.mkdir(OutputFolder)
         else:
             print("Program exiting")
             exit()
