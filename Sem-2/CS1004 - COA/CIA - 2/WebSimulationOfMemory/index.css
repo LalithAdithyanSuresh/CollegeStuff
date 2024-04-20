@@ -24,14 +24,14 @@ body{
     width: 100px;
     height:200px;
     background-color: green;
-    transition: 2s;
+    transition: 5s;
 }
-.box:hover{
-    width:300px;
-    left:500px;
-    bottom:50px;
-    background-color: blue;
+.animatedBox{
+    top:100px;
+    left:300px;
+    /* animation: RotateColor 3s infinite ease-in-out; */
 }
+
 
 @keyframes RotateColor{
     0%{

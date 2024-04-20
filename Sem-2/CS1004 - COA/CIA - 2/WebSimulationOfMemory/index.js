@@ -5,3 +5,4 @@ console.log(W_Height,W_Height);
 
 let Box1 = document.getElementById('Box1');
 Box1.style.top = '300px';
+setTimeout(function(){Box1.classList.add('animatedBox');},1000)
