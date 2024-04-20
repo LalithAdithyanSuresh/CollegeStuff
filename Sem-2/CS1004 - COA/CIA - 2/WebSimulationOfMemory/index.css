@@ -1,0 +1,45 @@
+html{
+    margin: 0;
+    padding: 0;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+}
+
+body{
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+}
+
+.box{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100px;
+    height:200px;
+    background-color: green;
+    transition: 2s;
+}
+.box:hover{
+    width:300px;
+    left:500px;
+    bottom:50px;
+    background-color: blue;
+}
+
+@keyframes RotateColor{
+    0%{
+        background-color: red;
+        transform: rotateZ(0deg);
+    }
+    100%{
+        background-color: yellow;
+        transform: rotateZ(180deg);
+    }
+}
