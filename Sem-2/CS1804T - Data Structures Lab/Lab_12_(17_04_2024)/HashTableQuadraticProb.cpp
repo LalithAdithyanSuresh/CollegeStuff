@@ -4,11 +4,11 @@
 #define EMPTY -1
 #define TOMB -2
 
-class LPHash{
+class QPHash{
     private:
         int array[SIZE];
     public:
-        LPHash(){
+        QPHash(){
             for(int i=0;i<SIZE;i++){
                 array[i] = EMPTY;
             }
@@ -21,7 +21,7 @@ class LPHash{
 
 int main(){
     int data,opt;
-    LPHash H1;
+    QPHash H1;
     while(1==1){
         printf("\nOptions:\n\t1. Insert\n\t2. Delete\n\t3. Search\n\t4. Display\n\t5. Exit\n>>>");
         scanf("%d",&opt);
@@ -68,10 +68,10 @@ int main(){
 
 
 // Method to Insert a value into the hash table
-int LPHash::Insert(int val){
+int QPHash::Insert(int val){
     for(int i=0;i<SIZE;i++){
-        if(array[(val+i)%SIZE]==EMPTY || array[(val+i)%SIZE]==TOMB){
-            array[(val+i)%SIZE] = val;
+        if(array[(val+(i*i))%SIZE]==EMPTY || array[(val+(i*i))%SIZE]==TOMB){
+            array[(val+(i*i))%SIZE] = val;
             return 1;
         }
     }
@@ -79,12 +79,12 @@ int LPHash::Insert(int val){
 }
 
 // Method to Delete an element form the hash table and repalce with tombstone
-int LPHash::Delete(int val){
+int QPHash::Delete(int val){
     for(int i=0;i<SIZE;i++){
-        if(array[(val+i)%SIZE]==EMPTY){
+        if(array[(val+(i*i))%SIZE]==EMPTY){
             return EMPTY;
-        }else if(array[(val+i)%SIZE] == val){
-            array[(val+i)%SIZE] = TOMB;
+        }else if(array[(val+(i*i))%SIZE] == val){
+            array[(val+(i*i))%SIZE] = TOMB;
             return val;
         }
     }
@@ -92,11 +92,11 @@ int LPHash::Delete(int val){
 }
 
 // Method to search for an element
-int LPHash::Search(int val){
+int QPHash::Search(int val){
     for(int i=0;i<SIZE;i++){
-        if(array[(val+i)%SIZE]==EMPTY){
+        if(array[(val+(i*i))%SIZE]==EMPTY){
             return EMPTY;
-        }else if(array[(val+i)%SIZE] == val){
+        }else if(array[(val+(i*i))%SIZE] == val){
             return val;
         }
     }
@@ -104,7 +104,7 @@ int LPHash::Search(int val){
 }
 
 // Method to Display the whole hash table
-void LPHash::Display(){
+void QPHash::Display(){
     for(int i=0;i<SIZE;i++){
         printf("\n%d - ",i);
         if(array[i] != EMPTY && array[i] != TOMB){
