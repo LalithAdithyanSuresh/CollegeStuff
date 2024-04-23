@@ -5,7 +5,7 @@ html{
     left:0;
     width:100vw;
     height:100vh;
-}
+} 
 
 body{
     background-color: white;
@@ -15,31 +15,45 @@ body{
     left:0;
     width:100vw;
     height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkgray;
+}
+.WINDOW{
+    width:1500px;
+    height:850px;
+    border: 2px black solid;
 }
 
-.box{
-    position: absolute;
-    top:0px;
-    left:0px;
-    width: 100px;
-    height:200px;
+.top-row{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    height:50%;
+    background-color: blue;
+}
+.top-row-segment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 450px;
+    margin: 0 25px;
+    height:100%;
     background-color: green;
-    transition: 5s;
 }
-.animatedBox{
-    top:100px;
-    left:300px;
-    /* animation: RotateColor 3s infinite ease-in-out; */
+.memory-line{
+    display: flex;
+    width:300px;
+    border-radius: 5px;
+    box-shadow: 3px 0px 10px rgba(0,0,0,0.2);
+    height:20px;
+    background-color: pink;
 }
-
-
-@keyframes RotateColor{
-    0%{
-        background-color: red;
-        transform: rotateZ(0deg);
-    }
-    100%{
-        background-color: yellow;
-        transform: rotateZ(180deg);
-    }
+.bottom-row{
+    display: flex;
+    width:100%;
+    height:50%;
+    background-color: yellow;
 }
