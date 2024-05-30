@@ -1,0 +1,137 @@
+body{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left:0;
+    color:white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.wrap{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.maincard{
+    width:90%;
+    height:80%;
+    max-width: 400px;
+    max-height: 300px;
+    background-color: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.scorecard{
+    width:100%;
+    border-radius: 30px 30px 10px 10px;
+    height:80%;
+    display: flex;
+    flex-direction: row;
+}
+.card{
+    width:100%;
+    margin:10px;
+    height: calc(100% - 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card.left{
+    margin-right: 0px;
+    background-color: rgba(255, 255, 0, 0.191);
+    border: 1px solid yellow;
+    border-radius: 20px 10px 10px 10px;
+}
+.card.right{
+    background-color: rgba(225, 0, 255, 0.191);
+    border: 1px solid rgb(225, 0, 255);
+    border-radius: 10px 20px 10px 10px;
+}
+.score{
+    height: 80%;
+    display: flex;
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+}
+.name{
+    height: 20%;
+    width: 100%;
+    border-radius: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.299);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+
+}
+
+.buttons{
+    width:100%;
+    border-radius: 10px 10px 30px 30px;
+    height:20%;
+    display: flex;
+    flex-direction: row;
+}
+.button{
+    width:100%;
+    margin:10px;
+    margin-top: 0px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 0, 0.121);
+    height: calc(100% - 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.button.accept{
+    border-radius: 10px 10px 10px 30px;
+    margin-right: 0;
+    background-color: rgba(17, 116, 29, 0.448);
+}
+.button.accept:hover{
+    background-color: rgba(17, 116, 29, 0.653);
+    border: 1px solid greenyellow;
+}
+.button.reject{
+    border-radius: 10px 10px 30px 10px;
+    background-color: rgba(116, 17, 17, 0.448);
+}
+.button.reject:hover{
+    background-color: rgba(116, 17, 17, 0.653);
+    border:1px solid red;
+}
+.button.increase{
+    border-radius: 10px 10px 30px 10px;
+    background-color: rgba(11, 89, 11, 0.448);
+}
+.button.increase:hover{
+    background-color: rgba(11, 89, 11, 0.592);
+    border: 1px solid green;
+
+}
+.button.hide{
+    display: none;
+}
+.button.solo{
+    border-radius: 10px 10px 30px 30px;
+}
+.button.inactive{
+    background-color: gray;
+}

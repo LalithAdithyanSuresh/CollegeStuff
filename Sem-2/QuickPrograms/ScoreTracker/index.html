@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Scores</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="maincard">
+            <div class="popup" id="popup"></div>
+            <div class="scorecard" id="score">
+                <div class="card left" id="LeftScore">
+                    <div class="score" id="Lscore">0</div>
+                    <div class="name" id="name">Lalith</div>
+                </div>
+                <div class="card right" id="RightScore">
+                    <div class="score" id="Rscore">0</div>
+                    <div class="name" id="name">Anjana</div>
+                </div>
+            </div>
+            <div class="buttons">
+                <div class="button accept" id="accept" onclick="Accept()">ACCEPT</div>
+                <div class="button increase" id="increase" onclick="Increase()">INCREASE YOUR SCORE</div>
+                <div class="button reject" id="reject" onclick="Reject()">REJECT</div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
