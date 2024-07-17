@@ -1,14 +1,14 @@
-cat
-mkdir
-cd
+cat (To write a file)
+mkdir (To create a folder in the current working directory)
+cd (To change the redi)
 rmdir
 rm
 cp 
 date
 pwd
 grep
-head
-tail
+head (First 10 lines)
+tail (Last 10 lines)
 more
 sort
 wc -l/c/w
