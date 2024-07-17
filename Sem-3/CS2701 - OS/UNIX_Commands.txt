@@ -17,3 +17,10 @@ ls
 ls a*
 mv
 man
+who
+
+
+
+finger
+cal
+echo
