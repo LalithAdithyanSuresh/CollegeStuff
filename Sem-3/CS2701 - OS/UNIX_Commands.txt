@@ -1,0 +1,19 @@
+cat
+mkdir
+cd
+rmdir
+rm
+cp 
+date
+pwd
+grep
+head
+tail
+more
+sort
+wc -l/c/w
+tar
+ls
+ls a*
+mv
+man
