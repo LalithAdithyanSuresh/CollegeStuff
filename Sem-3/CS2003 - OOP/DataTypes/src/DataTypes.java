@@ -1,5 +1,5 @@
 public class DataTypes {
-    public static void Integers(){
+    public static void Integers(int y){
         System.out.println("Checking out Integer DataTypes in Java");
         byte a = 10;
         System.out.println("BYTE : " + a);

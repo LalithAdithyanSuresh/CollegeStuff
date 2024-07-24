@@ -1,0 +1,13 @@
+Agent Programs
+
+	THe implementation of the agent function
+
+
+
+SIMPLE REFLEX agent : Env -> Sensor -> Process -> Actions ( Actuator ) -> Env
+
+MODEL REFLEX agent : Env -> Sensor -> Process ( Previous State, What actions do, Perception History) -> Actions (actuator) -> Env   "IF Fog is Happening"
+
+UTILITY agent : How good will the end result be?
+
+7.07 , 4.75 1.17
