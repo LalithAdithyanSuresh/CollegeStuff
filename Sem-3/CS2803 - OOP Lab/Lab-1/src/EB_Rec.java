@@ -1,5 +1,3 @@
-
-
 public class EB_Rec{
     private int ConNo;
     private String ConName;
