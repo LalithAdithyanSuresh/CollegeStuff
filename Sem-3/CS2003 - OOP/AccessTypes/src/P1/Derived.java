@@ -1,4 +1,4 @@
-package P1;
+package Pkko1;
 class Derived extends Protection {
  Derived() {
  System.out.println("derived constructor");
