@@ -5,6 +5,14 @@ Key_t key is a unique identifier for the pool
 shmget(Key_t key,size_t size,int shmflg);
 To create a common memory pool.
 
-shmget((key_t) 1234, 2048, 0666|IPC_CREAT);
+int shmid = shmget((key_t) 1234, 2048, 0666|IPC_CREAT);
+[ This will return a unique id which is the shmid that is used in shmat !!]
 [On failure it will return -1]
 [On success returns a valid identifier]
+
+shmat(int shmid,const void* shmaddr, int shmflg);
+{shmaddr is the address space of the process to which the }
+shmat(shmid, NULL ,0);
+
+
+
