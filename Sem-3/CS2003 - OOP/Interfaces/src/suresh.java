@@ -6,3 +6,5 @@ public class suresh implements lalith {
     }
        
 }
+class printAbst
+}

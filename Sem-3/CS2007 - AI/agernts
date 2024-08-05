@@ -1,0 +1,5 @@
+first state : starting point
+final state : Ending point
+action : Moving, Turning, Transition
+score : Time, Number of steps
+
