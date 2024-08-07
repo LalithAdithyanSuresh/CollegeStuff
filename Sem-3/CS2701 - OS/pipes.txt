@@ -1,0 +1,10 @@
+IPC
+
+1. Shared Memory
+2. Message Passing
+    - pipe
+
+Function call - pipe()
+Program A writes in pipe, Program B reads the content in the pipe.
+
+int pipe(int pipefd[2]);     |   Zero is returned by this call. -1 in case of failure

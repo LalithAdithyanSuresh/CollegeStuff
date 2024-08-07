@@ -19,6 +19,9 @@ abstract class hello{
 // Call to super() must be first statement in derived Class constructor.
 // If a constructor does not explicitly invoke a superclass constructor by using super(), the jabva compiler automatically inserts a call to the no-argument constructor of teh superclass.
 
+// This can be used to call the parents methids and variables
+
+
 
 public class App extends hello {
     @Override

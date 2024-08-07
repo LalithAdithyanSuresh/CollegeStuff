@@ -1,0 +1,21 @@
+The curse of dimensionality refers to the various phenomena that arise when analyzing and organizing data in high-dmension spaces that do not occur in low-dimensional settings such as the three-dimensional physical space if everday expience.
+The curese generally refers to the issues that arise when the number of datapoints in small (in a suitable defined sense) relatice to the intrinsic dimension of data.
+When the dimensionalityincreases, the volume of the space increases so dast that the available data become sparse. In order to obrain a reliable result, the amount of data needed often grows exponentially with the dimensionality. As the number of features or dimension grows.....
+
+
+PCA Principal component Analysis (PCA)
+is a technique for dimensionality reduction that identifies a set of orthogonal axes (Perpendicular Axes), called Principal components, that capture the maximum variance in the data.
+
+
+DIMENSIONALITY REDUCTION : 
+High DImensional spcace to low dimensional space so that it would retain some meaningful properties of the original data, ideally close to its intrinsic dimension.
+
+
+
+36 Col and 2,3 cols ( PCA )
+
+
+
+THe first component captures the most variation of the data, the second component captures the maximum variance from the First component.
+
+PCA employs a linear transformation that is based on preserving the most variance in the data using the leas number of dimensions.
