@@ -1,0 +1,150 @@
+@font-face { font-family: Nothing; src: url('nothing-font-5x7.otf'); } 
+
+body{
+    background-color: black;
+    margin:0;
+    padding: 0;
+    left:0;
+    top:0;
+    width:100vw;
+    height: 100vh;
+    font-family: Nothing;
+    font-size: 3em;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.Intro{
+    background-color: black;
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: 2s;
+
+}
+.Intro > .holder > .BGglow{
+    position: absolute;
+    top:20%;
+    left:0%;
+    border-radius: 50%;
+    content: "";
+    background: rgb(110,213,209);
+    background: radial-gradient(circle, rgba(110,213,209,1) 0%, rgba(2,0,36,0) 60%, rgba(2,0,36,0) 100%);
+    width:100%;
+    aspect-ratio: 1;
+    z-index: -1;
+}
+.holder{
+    width: 500px;
+    max-height: 500px;
+    position: relative;
+    margin-bottom: 40px;
+}
+.Intro > .holder >.image{
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 10;
+}
+
+
+
+/* CELEBERATE BUTTON */
+.cont {
+    text-align: center;
+}
+
+.celebrate-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.celebrate-btn:hover {
+    background-color: #1758c7;
+}
+
+.celebrate-btn:active {
+    transform: scale(0.98);
+}
+/* TRAIN */
+.TRAIN{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    z-index: 200;
+    height: 100px;
+    overflow: hidden;
+    transition: 2s;
+}
+.TRAIN > img{
+    max-height: 150px;
+    position: absolute;
+    left: -300px;
+    animation: trainslide 15s linear infinite;
+
+}
+.hide{
+    top:-100%;
+    opacity: 0;
+}
+@keyframes trainslide {
+    0%{
+        left:-300px;
+        opacity: 1;
+    }
+    90%{
+        left: 120%;
+        opacity: 1;
+    }
+    91%{
+        opacity: 0;
+        left:120%;
+    }
+    100%{
+        left:-300px;
+        opacity: 0;
+    }
+}
+
+/* GALLERY */
+.wrapper{
+    overflow: hidden;
+    left:0;
+}
+
+.imageContainer{
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  left: 0;
+  width: 70%;
+}
+
+.imageContainer .image{
+  height: 455px;
+  aspect-ratio: 1;
+  background-size: cover;
+}
+.imageContainer .image img{
+    width: 100%;
+}
+
+
+.reveal{
+    opacity: 1;
+}
